@@ -1,0 +1,143 @@
+#### Installation ####
+
+curl -sSL https://get.rvm.io | bash -s stable
+
+rvm get stable
+
+rvm requirements
+
+gem install rails --version 4.0.4
+
+
+#### Ruby on Rails Commands ####
+
+## Create new project 
+
+$ mkdir rails_projects
+$ cd rails_projects
+$ rails new first_app
+
+$ rails new sample_app --skip-test-unit
+
+## Start rails server 
+
+rails server
+rails s
+
+  $ rails server --environment production
+  $ bundle exec rake db:migrate RAILS_ENV=production
+
+## Rails console
+
+rails console
+rails console --sandbox
+
+  $ rails console
+  Loading development environment
+  >> Rails.env
+  => "development"
+  >> Rails.env.development?
+  => true
+  >> Rails.env.test?
+  => false
+
+  $ rails console test
+  Loading test environment
+  >> Rails.env
+  => "test"
+  >> Rails.env.test?
+  => true
+
+## Bundle update/install
+
+bundle update
+bundle install
+$ bundle install --without production
+
+## Run tests
+
+bundle exec rake spec
+
+bundle exec rspec spec/
+
+bundle exec rspec spec/requests/
+
+bundle exec rspec spec/requests/user_pages_spec.rb -e "signup page"
+ bundle exec rspec spec/requests/user_pages_spec.rb -e "signup with valid informa
+tion"
+
+## Rails generate modules
+
+rails generate scaffold User name:string email:string
+$ rails generate scaffold Micropost content:string user_id:integer
+$ rails generate rspec:install
+$ rails generate controller StaticPages home help --no-test-framework
+$ rails generate controller FooBars baz quux
+$ rails destroy  controller FooBars baz quux
+
+$ rails generate model Foo bar:string baz:integer
+$ rails destroy model Foo
+
+$ rails generate integration_test static_pages
+  $ bundle exec rspec spec/requests/static_pages_spec.rb
+
+$ rails generate controller Users new --no-test-framework // generates a users controller with a new action 
+$ rails generate model User name:string email:string
+
+$ rails generate migration add_index_to_users_email // migration to change db tables
+$ rails generate migration add_password_digest_to_users password_digest:string
+
+## List of routes 
+
+rake routes
+
+## Rails db migration / Rake
+
+bundle exec rake db:migrate
+bundle exec rake db:rollback
+
+$ bundle exec rake test:prepare // create a test database 
+
+  $ rake db:migrate
+  $ rake db:rollback
+  $ rake db:migrate VERSION=0
+
+$ bundle exec rake -T db // list of db tasks
+$ bundle exec rake -T // list of rake tasks
+
+bundle exec rake db:reset
+bundle exec rake test:prepare
+
+## Git 
+
+$ git config --global user.name "Your Name"
+$ git config --global user.email your.email@example.com
+
+$ git config --global alias.co checkout // alias co for checkout "git co"
+
+$ git init
+
+$ git add .
+
+$ git status
+
+$ git commit -m "Initialize repository"
+
+$ git log
+
+$ git checkout -f
+$ git status
+
+$ git remote add origin https://github.com/<username>/first_app.git
+$ git push -u origin master
+$ git remote add origin https://github.com/mhartl/first_app.git
+
+$ git checkout -b modify-README
+$ git branch
+$ git mv README.rdoc README.md
+
+$ git checkout master
+$ git merge modify-README
+$ git branch -d modify-README
+$ git commit -a -m "Improve the README file"
+$ git branch -D topic-branch // delete with out merge before
